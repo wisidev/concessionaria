@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Carros</title>
+
+</head>
+<body>
+    <h2>Lista de Carros</h2>
+    
+    <!-- Botão para adicionar um novo carro -->
+    <a href="/novo">Adicionar Novo Carro</a>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Modelo</th>
+                <th>Marca</th>
+                <th>Ano</th>
+                <th>Preço</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="carro : ${carros}">
+                <td th:text="${carro.modelo}"></td>
+                <td th:text="${carro.marca}"></td>
+                <td th:text="${carro.ano}"></td>
+                <td th:text="${#numbers.formatDecimal(carro.preco, 2, 2, 'POINT')}"></td>
+                <td>
+                    <a th:href="@{/editar/{id}(id=${carro.id})}">Editar</a> | 
+                    <a th:href="@{/deletar/{id}(id=${carro.id})}" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                </td>
+            </tr>
+        </tbody>
+        

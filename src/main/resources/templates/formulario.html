@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${carro.id == null ? 'Cadastrar Carro' : 'Editar Carro'}">Cadastrar Carro</title>
+
+
+</head>
+<body>
+    <h2 th:text="${carro.id == null ? 'Cadastrar Novo Carro' : 'Editar Carro'}"></h2>
+    
+    <form th:action="@{${carro.id == null} ? '/salvar' : '/atualizar/' + ${carro.id}}" th:object="${carro}" method="post">
+        <div>
+            <label for="modelo">Modelo:</label>
+            <input type="text" id="modelo" th:field="*{modelo}" required>
+        </div>
+        
+        <div>
+            <label for="marca">Marca:</label>
+            <input type="text" id="marca" th:field="*{marca}" required>
+        </div>
+        
+        <div>
+            <label for="ano">Ano:</label>
+            <input type="number" id="ano" th:field="*{ano}" required>
+        </div>
+        
+        <div>
+            <label for="preco">Preço:</label>
+            <input type="number" id="preco" th:field="*{preco}" required step="0.01" placeholder="Exemplo: 10000.00">
+        </div>
+        
+        <button type="submit">Salvar</button>
+    </form>
+
+    <!-- Link para voltar à lista de carros -->
+    <a href="/carro">Voltar para a lista de carros</a>
+    <a href="/">Voltar para a Página Inicial</a>
+</body>
+</html>
+

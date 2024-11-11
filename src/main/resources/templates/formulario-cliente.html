@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Cliente</title>
+
+</head>
+<body>
+    <header>
+        <h1>Cadastro de Cliente</h1>
+    </header>
+
+    <main>
+        <form action="/cliente/salvar" method="post">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required placeholder="Digite o nome do cliente">
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required placeholder="Digite o e-mail do cliente">
+
+            <label for="telefone">Telefone:</label>
+            <input type="tel" id="telefone" name="telefone" required placeholder="Digite o telefone do cliente">
+
+            <button type="submit">Salvar</button>
+        </form>
+
+        <a href="/clientes" class="voltar">Voltar para a lista de clientes</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Concessionária de Carros</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Clientes</title>
+
+</head>
+<body>
+    <header>
+        <h1>Lista de Clientes</h1>
+    </header>
+
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Telefone</th>
+                    <th>Ações</th> <!-- Para adicionar ações como editar e excluir -->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Laço para listar os clientes -->
+                <tr th:each="cliente : ${clientes}">
+                    <td th:text="${cliente.nome}"></td>
+                    <td th:text="${cliente.email}"></td>
+                    <td th:text="${cliente.telefone}"></td>
+                    <td>
+                        <!-- Links para editar e excluir -->
+                        <a href="/cliente/editar/{id}" th:href="@{/cliente/editar/{id}(id=${cliente.id})}">Editar</a> |
+                        <a href="/cliente/deletar/{id}" th:href="@{/cliente/deletar/{id}(id=${cliente.id})}" onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="/cliente/novo">Adicionar Novo Cliente</a>
+        <a href="/">Voltar para a Página Inicial</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Concessionária de Carros</p>
+    </footer>
+</body>
+</html>
